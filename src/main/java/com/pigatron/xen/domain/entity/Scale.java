@@ -14,7 +14,7 @@ public class Scale {
     private String name;
 
     @NotNull
-    private List<Float> notes;
+    private List<Float> cents;
 
 
     public String getId()
@@ -37,13 +37,13 @@ public class Scale {
         this.name = name;
     }
 
-    public List<Float> getNotes()
+    public List<Float> getCents()
     {
-        return notes;
+        return cents;
     }
 
-    public void setNotes(List<Float> notes)
+    public void setCents(List<Float> cents)
     {
-        this.notes = notes;
+        this.cents = cents;
     }
 }
