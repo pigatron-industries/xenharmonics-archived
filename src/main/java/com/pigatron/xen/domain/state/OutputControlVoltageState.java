@@ -1,18 +1,20 @@
-package com.pigatron.xen.hardware;
-
+package com.pigatron.xen.domain.state;
 
 import com.pigatron.xen.domain.entity.ControlVoltage;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
-public class ControlVoltageOutputService {
-
+@Component
+public class OutputControlVoltageState
+{
     @Value("${xen.controlvoltage.outputs.num}")
     private int controlVoltageOutputNumber;
+
 
     private ControlVoltage[] controlVoltages;
 
 
-    public ControlVoltageOutputService() {
+    public OutputControlVoltageState() {
         controlVoltages = new ControlVoltage[controlVoltageOutputNumber];
     }
 
@@ -20,8 +22,13 @@ public class ControlVoltageOutputService {
         controlVoltages[outputId] = controlVoltage;
     }
 
-    public void shiftOutVoltages() {
-        //TODO shift voltages out to DACS
+    public ControlVoltage[] getControlVoltages()
+    {
+        return controlVoltages;
     }
 
+    public void setControlVoltages(ControlVoltage[] controlVoltages)
+    {
+        this.controlVoltages = controlVoltages;
+    }
 }

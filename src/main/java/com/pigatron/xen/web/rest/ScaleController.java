@@ -2,6 +2,7 @@ package com.pigatron.xen.web.rest;
 
 import com.pigatron.xen.domain.entity.Scale;
 import com.pigatron.xen.domain.repository.ScaleRepository;
+import com.pigatron.xen.domain.state.SelectedScale;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiResponse;
 import com.wordnik.swagger.annotations.ApiResponses;
@@ -17,9 +18,11 @@ import java.util.List;
 @RequestMapping(value = "/xen/scales", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ScaleController
 {
-
     @Autowired
     private ScaleRepository scaleRepository;
+
+    @Autowired
+    private SelectedScale selectedScale;
 
 
     @RequestMapping(value = "", method = RequestMethod.GET)
@@ -49,12 +52,19 @@ public class ScaleController
     }
 
 
-    @RequestMapping(value = "/{id}/select", method = RequestMethod.POST)
+    @RequestMapping(value = "/selected", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
     @ApiOperation(value = "Set the currently selected scale")
-    public int selectScale(@PathVariable("id") int id) {
-        //TODO
-        return id;
+    public void selectScale(@Valid @RequestBody Scale scale) {
+        selectedScale.setSelectedScale(scale);
+    }
+
+
+    @RequestMapping(value = "/selected", method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.OK)
+    @ApiOperation(value = "Get the currently selected scale")
+    public Scale getSelectedScale() {
+        return selectedScale.getSelectedScale();
     }
 
 
