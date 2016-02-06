@@ -1,6 +1,6 @@
 package com.pigatron.xen.domain.entity;
 
-public class Note extends ControlVoltage {
+public class Note {
 
     private int octaveNumber;
     private int noteNumber;

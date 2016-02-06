@@ -14,6 +14,9 @@ public class Scale {
     private String name;
 
     @NotNull
+    private float octaveCents = 1200;
+
+    @NotNull
     private List<Float> cents;
 
 
@@ -35,6 +38,14 @@ public class Scale {
     public void setName(String name)
     {
         this.name = name;
+    }
+
+    public float getOctaveCents() {
+        return octaveCents;
+    }
+
+    public void setOctaveCents(float octaveCents) {
+        this.octaveCents = octaveCents;
     }
 
     public List<Float> getCents()

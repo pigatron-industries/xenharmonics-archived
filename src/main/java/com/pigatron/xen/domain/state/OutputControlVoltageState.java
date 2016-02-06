@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class OutputControlVoltageState
 {
-    @Value("${xen.controlvoltage.outputs.num}")
+    @Value("${xen.controlvoltage.output.size}")
     private int controlVoltageOutputNumber;
 
 

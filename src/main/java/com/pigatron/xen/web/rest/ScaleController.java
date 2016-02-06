@@ -56,7 +56,7 @@ public class ScaleController
     @ResponseStatus(HttpStatus.OK)
     @ApiOperation(value = "Set the currently selected scale")
     public void selectScale(@Valid @RequestBody Scale scale) {
-        selectedScale.setSelectedScale(scale);
+        selectedScale.setScale(scale);
     }
 
 
@@ -64,7 +64,7 @@ public class ScaleController
     @ResponseStatus(HttpStatus.OK)
     @ApiOperation(value = "Get the currently selected scale")
     public Scale getSelectedScale() {
-        return selectedScale.getSelectedScale();
+        return selectedScale.getScale();
     }
 
 

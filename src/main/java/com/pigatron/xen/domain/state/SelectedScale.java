@@ -6,13 +6,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class SelectedScale
 {
-    private Scale selectedScale;
+    private Scale scale;
 
-    public Scale getSelectedScale() {
-        return selectedScale;
+    public Scale getScale() {
+        return scale;
     }
 
-    public void setSelectedScale(Scale selectedScale) {
-        this.selectedScale = selectedScale;
+    public void setScale(Scale scale) {
+        this.scale = scale;
     }
 }
