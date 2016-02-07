@@ -6,14 +6,22 @@ buildscript {
 		mavenCentral()
 	}
 	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") 
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath('org.springframework:springloaded:1.2.0.RELEASE')
 	}
 }
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
-apply plugin: 'spring-boot' 
+apply plugin: 'spring-boot'
+
+idea {
+	module {
+		inheritOutputDirs = false
+		outputDir = file("$buildDir/classes/main/")
+	}
+}
 
 jar {
 	baseName = 'xen'
@@ -36,6 +44,11 @@ dependencies {
 	compile('com.mangofactory:swagger-springmvc:1.0.2')
 	compile('org.springframework.data:spring-data-mongodb:1.8.2.RELEASE')
 	compile('com.pi4j:pi4j-core:1.0')
+
+	compile('org.webjars:angularjs:1.5.0-rc.2')
+	compile('org.webjars:jquery:2.2.0')
+	compile('org.webjars:angular-ui-bootstrap:1.1.1-1')
+	compile('org.webjars:jquery:2.2.0')
 
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	testCompile('org.assertj:assertj-core:3.3.0')

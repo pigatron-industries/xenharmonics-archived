@@ -1,0 +1,60 @@
+<div class="container-fluid">
+    <h2>Scales</h2>
+
+    <div ng-controller="scales" ng-cloak class="ng-cloak">
+        <button class="btn btn-primary" ng-show="$parent.editing == null" href="#" ng-click="addScale()">add</button>
+        <div class="panel panel-default" ng-repeat="(i, scale) in scales">
+            <div class="panel-heading clearfix" ng-class="{'selected': $parent.selected == scale.id}">
+                <div class="col-sm-2 panel-title">{{scale.name}}</div>
+                <div class="col-sm-8 scale-vis">
+                    <div class="pull-left scale-vis-cent" ng-repeat="cent in scale.cents" ng-style="{'left':$parent.$parent.centToPercent(cent)}"></div>
+                </div>
+                <div class="col-sm-2 pull-right header-buttons">
+                    <div class="pull-right">
+                        <button class="btn btn-primary" ng-show="$parent.editing == null" href="#" ng-click="$parent.editScale(scale)">edit</button>
+                        <button class="btn btn-success" ng-show="$parent.editing == null" href="#" ng-click="$parent.setSelectedScale(scale)">select</button>
+                        <button class="btn btn-danger" ng-show="$parent.editing.id == scale.id" href="#" ng-click="$parent.editing = null">cancel</button>
+                        <button class="btn btn-success" ng-show="$parent.editing.id == scale.id" href="#" ng-click="$parent.saveScale(i)">save</button>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="$parent.editing.id == scale.id">
+                <div class="panel-body">
+                    <form name="myForm">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <input class="form-control" style="width:100%;" type="text" name="name" ng-model="editing.name" required />
+                            </div>
+                            <vds-multirange-lite class="multirange col-sm-8" ng-model="editing.multirange" ng-mousemove="$parent.onMultiRangeChange()"></vds-multirange-lite>
+                            <div class="col-sm-2">
+                                <button class="btn btn-primary" ng-click="$parent.addCent()">+</button>
+                                <button class="btn btn-default" href="#" ng-click="$parent.equalizeScale()">equalize</button>
+                            </div>
+                        </div>
+                        <svg height="50" width="100%">
+                            <line x1="0" y1="0" x2="200" y2="200" style="stroke:rgb(0,0,0);stroke-width:2" />
+                        </svg>
+                        <table>
+                            <tr>
+                                <th ng-repeat="(j, cent) in editing.cents track by j">
+                                    <label>{{j+1}} <span ng-show="$last">(Octave)</span></label>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td ng-repeat="(j, cent) in editing.cents track by j">
+                                    <div class="input-group centInputGroup">
+                                        <input class="centInput form-control" type="number" name="cent" ng-model="$parent.editing.cents[j]" required ng-disabled="$index==0" ng-blur="$parent.onCentChange(j)"/>
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-danger" type="button" ng-click="$parent.deleteCent(j)">-</button>
+                                            </span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {{editing}}
+    </div>
+</div>

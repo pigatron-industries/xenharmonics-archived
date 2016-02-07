@@ -7,6 +7,7 @@ import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiResponse;
 import com.wordnik.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +16,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/xen/scales", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/scales", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ScaleController
 {
     @Autowired
@@ -29,7 +30,7 @@ public class ScaleController
     @ResponseStatus(HttpStatus.OK)
     @ApiOperation(value = "Get all scales")
     public List<Scale> getScales() {
-        return scaleRepository.findAll();
+        return scaleRepository.findAll(new Sort(Sort.Direction.ASC, "name"));
     }
 
 

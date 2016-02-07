@@ -1,5 +1,53 @@
-<html>
-<body>
-<a href="/docs/index.html">docs</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scale Designer</title>
+
+    <script src="/webjars/jquery/2.2.0/jquery.min.js"></script>
+    <script src="/webjars/angularjs/1.5.0-rc.2/angular.min.js"></script>
+    <script src="/webjars/angular-ui-bootstrap/1.1.1-1/ui-bootstrap.min.js"></script>
+    <script src="/webjars/angular-ui-bootstrap/1.1.1-1/ui-bootstrap-tpls.min.js"></script>
+    <script src="/libs/angular-multirange/multirange.js"></script>
+    <script src="/xen.js"></script>
+    <script src="/scale-designer/scale-designer.js"></script>
+
+    <link href="/webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/libs/angular-multirange/multirange.css" rel="stylesheet">
+    <link href="/xen.css" rel="stylesheet">
+    <link href="/scale-designer/scale-designer.css" rel="stylesheet">
+
+    <style type="text/css">
+        [ng\:cloak], [ng-cloak], .ng-cloak {
+            display: none !important;
+        }
+    </style>
+</head>
+<body ng-app="xen">
+
+    <div ng-controller="xen" ng-cloak class="ng-cloak">
+
+        <header>
+            <div class="header-inner">
+                <div class="col-sm-2">
+                    <h1>XEN-9000</h1>
+                </div>
+                <div class="col-sm-8 tabset" ng-click="page='scales'">
+                    <div class="tab" ng-class="{selected:page=='scales'}">
+                        <span>Scales</span>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="company">
+                        <div class="pigatron">pigatron</div>
+                        <div class="industries">INDUSTRIES</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <ng-include src="'/scale-designer/scale-designer.html'" ng-show="page=='scales'"></ng-include>
+    </div>
+
 </body>
 </html>

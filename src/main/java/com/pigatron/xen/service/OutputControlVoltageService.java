@@ -13,11 +13,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class OutputControlVoltageService {
 
-    @Value("{xen.controlvoltage.output.datapin}")
-    byte dataPin;
+    @Value("${xen.controlvoltage.output.datapin}")
+    private byte dataPin;
 
-    @Value("{xen.controlvoltage.output.clockpin}")
-    byte clockPin;
+    @Value("${xen.controlvoltage.output.clockpin}")
+    private byte clockPin;
 
     @Autowired
     private OutputControlVoltageState outputControlVoltageState;

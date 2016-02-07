@@ -1,0 +1,45 @@
+
+.panel-heading {
+    padding: 3px 10px;
+}
+
+.panel-title {
+    padding: 6px;
+}
+
+.panel-heading.selected {
+    background-color: #dff0d8;
+}
+
+.scale-vis {
+    position: relative;
+    height: 2.4em;
+}
+
+.scale-vis-cent {
+    position: absolute;
+    height: 2.4em;
+    width: 2px;
+    background-color: #444;
+}
+
+.multirange {
+    padding-left: 3px;
+    padding-right: 0;
+}
+
+.centInputGroup {
+    max-width: 100px;
+}
+
+.row {
+    padding-top: 10px;
+}
+
+table {
+    width:100%;
+}
+
+.form-control {
+    padding: 6px 6px;
+}

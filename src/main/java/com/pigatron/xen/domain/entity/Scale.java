@@ -13,8 +13,7 @@ public class Scale {
     @NotNull
     private String name;
 
-    @NotNull
-    private float octaveCents = 1200;
+    private String notes;
 
     @NotNull
     private List<Float> cents;
@@ -40,12 +39,12 @@ public class Scale {
         this.name = name;
     }
 
-    public float getOctaveCents() {
-        return octaveCents;
+    public String getNotes() {
+        return notes;
     }
 
-    public void setOctaveCents(float octaveCents) {
-        this.octaveCents = octaveCents;
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 
     public List<Float> getCents()
@@ -56,5 +55,9 @@ public class Scale {
     public void setCents(List<Float> cents)
     {
         this.cents = cents;
+    }
+
+    public float getOctaveCents() {
+        return cents.get(cents.size()-1);
     }
 }
