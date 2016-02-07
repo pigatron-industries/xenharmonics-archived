@@ -1,8 +1,11 @@
 <div class="container-fluid">
-    <h2>Scales</h2>
 
     <div ng-controller="scales" ng-cloak class="ng-cloak">
-        <button class="btn btn-primary" ng-show="$parent.editing == null" href="#" ng-click="addScale()">add</button>
+        <div class="row">
+            <div class="col-sm-1 pull-right">
+                <button class="btn btn-primary pull-right" ng-show="$parent.editing == null" href="#" ng-click="addScale()">add</button>
+            </div>
+        </div>
         <div class="panel panel-default" ng-repeat="(i, scale) in scales">
             <div class="panel-heading clearfix" ng-class="{'selected': $parent.selected == scale.id}">
                 <div class="col-sm-2 panel-title">{{scale.name}}</div>
@@ -25,7 +28,7 @@
                             <div class="col-sm-2">
                                 <input class="form-control" style="width:100%;" type="text" name="name" ng-model="editing.name" required />
                             </div>
-                            <vds-multirange-lite class="multirange col-sm-8" ng-model="editing.multirange" ng-mousemove="$parent.onMultiRangeChange()"></vds-multirange-lite>
+                            <vds-multirange-lite class="multirange col-sm-8" ng-model="editing.multirange" ng-mousemove="$parent.onMultiRangeMouseMove()" ng-mousedown="$parent.onMultiRangeMouseDown()" ng-mouseup="$parent.onMultiRangeMouseUp()"></vds-multirange-lite>
                             <div class="col-sm-2">
                                 <button class="btn btn-primary" ng-click="$parent.addCent()">+</button>
                                 <button class="btn btn-default" href="#" ng-click="$parent.equalizeScale()">equalize</button>
@@ -43,9 +46,9 @@
                             <tr>
                                 <td ng-repeat="(j, cent) in editing.cents track by j">
                                     <div class="input-group centInputGroup">
-                                        <input class="centInput form-control" type="number" name="cent" ng-model="$parent.editing.cents[j]" required ng-disabled="$index==0" ng-blur="$parent.onCentChange(j)"/>
+                                        <input class="centInput form-control" type="text" name="cent" ng-model="$parent.editing.cents[j]" required ng-disabled="$index==0" ng-blur="$parent.onCentChange(j)"/>
                                             <span class="input-group-btn">
-                                                <button class="btn btn-danger" type="button" ng-click="$parent.deleteCent(j)">-</button>
+                                                <button class="btn btn-danger deleteCentBtn" type="button" ng-click="$parent.deleteCent(j)">-</button>
                                             </span>
                                     </div>
                                 </td>

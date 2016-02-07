@@ -32,8 +32,11 @@
                 <div class="col-sm-2">
                     <h1>XEN-9000</h1>
                 </div>
-                <div class="col-sm-8 tabset" ng-click="page='scales'">
-                    <div class="tab" ng-class="{selected:page=='scales'}">
+                <div class="col-sm-8 tabset">
+                    <div class="tab" ng-class="{selected:page=='dashboard'}" ng-click="page='dashboard'">
+                        <span>Dashboard</span>
+                    </div>
+                    <div class="tab" ng-class="{selected:page=='scales'}" ng-click="page='scales'">
                         <span>Scales</span>
                     </div>
                 </div>

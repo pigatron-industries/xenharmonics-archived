@@ -49,7 +49,7 @@ app.controller('scales', function($scope, $http) {
         var octave = $scope.editing.cents[noteCount];
         var interval = octave/noteCount;
         for(var i=1; i<=noteCount; i++) {
-            $scope.editing.cents[i] = interval * i;
+            $scope.editing.cents[i] = Math.round(interval * i * 100)/100;
         }
         createMultiRangeArray($scope.editing);
     };
@@ -65,8 +65,18 @@ app.controller('scales', function($scope, $http) {
         return (cents/(MAX_SCALE_CENTS/100))+'%';
     };
 
-    $scope.onMultiRangeChange = function() {
-        createCentsFromMultiRange($scope.editing);
+    $scope.onMultiRangeMouseMove = function() {
+        if($scope.mousedown) {
+            createCentsFromMultiRange($scope.editing);
+        }
+    };
+
+    $scope.onMultiRangeMouseDown = function() {
+        $scope.mousedown = true;
+    };
+
+    $scope.onMultiRangeMouseUp = function() {
+        $scope.mousedown = false;
     };
 
     $scope.onCentChange = function(centIndex) {
