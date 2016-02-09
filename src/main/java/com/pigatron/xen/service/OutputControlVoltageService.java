@@ -4,8 +4,8 @@ import com.pi4j.wiringpi.Shift;
 import com.pigatron.xen.domain.entity.ControlVoltage;
 import com.pigatron.xen.domain.entity.Note;
 import com.pigatron.xen.domain.entity.Scale;
-import com.pigatron.xen.domain.state.OutputControlVoltageState;
-import com.pigatron.xen.domain.state.SelectedScale;
+import com.pigatron.xen.domain.entity.ApplicationState;
+import com.pigatron.xen.domain.entity.OutputControlVoltages;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -20,10 +20,10 @@ public class OutputControlVoltageService {
     private byte clockPin;
 
     @Autowired
-    private OutputControlVoltageState outputControlVoltageState;
+    private OutputControlVoltages outputControlVoltages;
 
     @Autowired
-    private SelectedScale selectedScale;
+    private ApplicationState applicationState;
 
 
     public ControlVoltage getControlVoltage(Scale scale, Note note) {
@@ -32,15 +32,15 @@ public class OutputControlVoltageService {
     }
 
     public ControlVoltage getControlVoltageForSelectedScale(Note note) {
-        return getControlVoltage(selectedScale.getScale(), note);
+        return getControlVoltage(applicationState.getSelectedScale(), note);
     }
 
     public void setOutputVoltage(int outputId, ControlVoltage controlVoltage) {
-        outputControlVoltageState.setOutputVoltage(outputId, controlVoltage);
+        outputControlVoltages.setOutputVoltage(outputId, controlVoltage);
     }
 
     public void shiftOutControlVoltages() {
-        for(ControlVoltage controlVoltage : outputControlVoltageState.getControlVoltages()) {
+        for(ControlVoltage controlVoltage : outputControlVoltages.getControlVoltages()) {
             byte[] value = controlVoltage.getByteValue();
             Shift.shiftOut(dataPin, clockPin, (byte)Shift.MSBFIRST, value[0]);
             Shift.shiftOut(dataPin, clockPin, (byte)Shift.MSBFIRST, value[1]);

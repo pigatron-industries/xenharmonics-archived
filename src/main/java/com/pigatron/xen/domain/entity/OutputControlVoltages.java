@@ -1,11 +1,10 @@
-package com.pigatron.xen.domain.state;
+package com.pigatron.xen.domain.entity;
 
-import com.pigatron.xen.domain.entity.ControlVoltage;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
-public class OutputControlVoltageState
+public class OutputControlVoltages
 {
     @Value("${xen.controlvoltage.output.size}")
     private int controlVoltageOutputNumber;
@@ -14,7 +13,7 @@ public class OutputControlVoltageState
     private ControlVoltage[] controlVoltages;
 
 
-    public OutputControlVoltageState() {
+    public OutputControlVoltages() {
         controlVoltages = new ControlVoltage[controlVoltageOutputNumber];
     }
 
