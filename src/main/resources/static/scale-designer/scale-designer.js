@@ -1,7 +1,9 @@
 
 var MAX_SCALE_CENTS = 1200;
 
-app.controller('scales', function($scope, $http) {
+app.controller('scales', function($scope, $routeParams, $http) {
+    $scope.name = "scales";
+    $scope.params = $routeParams;
 
     // Load data
     $http.get('/api/scales').success(function(data) {

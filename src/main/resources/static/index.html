@@ -6,6 +6,7 @@
 
     <script src="/webjars/jquery/2.2.0/jquery.min.js"></script>
     <script src="/webjars/angularjs/1.5.0-rc.2/angular.min.js"></script>
+    <script src="/webjars/angularjs/1.5.0-rc.2/angular-route.min.js"></script>
     <script src="/webjars/angular-ui-bootstrap/1.1.1-1/ui-bootstrap.min.js"></script>
     <script src="/webjars/angular-ui-bootstrap/1.1.1-1/ui-bootstrap-tpls.min.js"></script>
     <script src="/libs/angular-multirange/multirange.js"></script>
@@ -33,12 +34,16 @@
                     <h1>XEN-9000</h1>
                 </div>
                 <div class="col-sm-8 tabset">
-                    <div class="tab" ng-class="{selected:page=='dashboard'}" ng-click="page='dashboard'">
-                        <span>Dashboard</span>
-                    </div>
-                    <div class="tab" ng-class="{selected:page=='scales'}" ng-click="page='scales'">
-                        <span>Scales</span>
-                    </div>
+                    <a href="#/">
+                        <div class="tab" ng-class="{selected:$location.$$path=='/'}">
+                            <span>Dashboard</span>
+                        </div>
+                    </a>
+                    <a href="#/scales">
+                        <div class="tab" ng-class="{selected:$location.$$path=='/scales'}">
+                            <span>Scales</span>
+                        </div>
+                    </a>
                 </div>
                 <div class="col-sm-2">
                     <div class="company">
@@ -49,7 +54,8 @@
             </div>
         </header>
 
-        <ng-include src="'/scale-designer/scale-designer.html'" ng-show="page=='scales'"></ng-include>
+        <div ng-view></div>
+
     </div>
 
 </body>
