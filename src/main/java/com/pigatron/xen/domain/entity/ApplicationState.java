@@ -3,7 +3,6 @@ package com.pigatron.xen.domain.entity;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.stereotype.Component;
 
-@Component
 public class ApplicationState {
 
     @DBRef
@@ -16,7 +15,5 @@ public class ApplicationState {
     public void setSelectedScale(Scale selectedScale) {
         this.selectedScale = selectedScale;
     }
-
-
 
 }
