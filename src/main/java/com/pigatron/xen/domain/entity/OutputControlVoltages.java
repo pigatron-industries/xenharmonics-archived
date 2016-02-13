@@ -3,18 +3,14 @@ package com.pigatron.xen.domain.entity;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-@Component
 public class OutputControlVoltages
 {
-    @Value("${xen.controlvoltage.output.size}")
-    private int controlVoltageOutputNumber;
-
 
     private ControlVoltage[] controlVoltages;
 
 
-    public OutputControlVoltages() {
-        controlVoltages = new ControlVoltage[controlVoltageOutputNumber];
+    public OutputControlVoltages(int size) {
+        controlVoltages = new ControlVoltage[size];
     }
 
     public void setOutputVoltage(int outputId, ControlVoltage controlVoltage) {

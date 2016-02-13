@@ -1,7 +1,6 @@
 package com.pigatron.xen.domain.entity;
 
 import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.stereotype.Component;
 
 public class ApplicationState {
 

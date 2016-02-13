@@ -13,17 +13,19 @@ import org.springframework.stereotype.Service;
 @Service
 public class OutputControlVoltageService {
 
+    @Value("${xen.controlvoltage.output.size}")
+    private int outputSize;
+
     @Value("${xen.controlvoltage.output.datapin}")
     private byte dataPin;
 
     @Value("${xen.controlvoltage.output.clockpin}")
     private byte clockPin;
 
-    @Autowired
     private OutputControlVoltages outputControlVoltages;
 
     @Autowired
-    private ApplicationState applicationState;
+    private ApplicationStateService applicationStateService;
 
 
     public ControlVoltage getControlVoltage(Scale scale, Note note) {
@@ -32,7 +34,7 @@ public class OutputControlVoltageService {
     }
 
     public ControlVoltage getControlVoltageForSelectedScale(Note note) {
-        return getControlVoltage(applicationState.getSelectedScale(), note);
+        return getControlVoltage(applicationStateService.getSelectedScale(), note);
     }
 
     public void setOutputVoltage(int outputId, ControlVoltage controlVoltage) {

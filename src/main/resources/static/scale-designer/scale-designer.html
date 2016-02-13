@@ -2,8 +2,14 @@
 
     <div ng-controller="scales" ng-cloak class="ng-cloak">
         <div class="row">
-            <div class="col-sm-1 pull-right">
-                <button class="btn btn-primary pull-right" ng-show="$parent.editing == null" href="#" ng-click="addScale()">add</button>
+            <div class="col-sm-3 pull-right">
+                <div class="pull-right">
+                    <select class="form-control">
+                        <option value="1">Frequency Ratios</option>
+                        <option value="1">12-TET Scale</option>
+                    </select>
+                    <button class="btn btn-primary" ng-show="$parent.editing == null" href="#" ng-click="addScale()">add</button>
+                </div>
             </div>
         </div>
         <div class="panel panel-default" ng-repeat="(i, scale) in scales">

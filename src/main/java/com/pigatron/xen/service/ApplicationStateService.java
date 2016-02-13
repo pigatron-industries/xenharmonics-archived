@@ -11,11 +11,15 @@ import java.util.List;
 @Service
 public class ApplicationStateService {
 
-    @Autowired
     private ApplicationStateRepository applicationStateRepository;
 
-    @Autowired
     private ApplicationState applicationState;
+
+    @Autowired
+    ApplicationStateService(ApplicationStateRepository applicationStateRepository) {
+        this.applicationStateRepository = applicationStateRepository;
+        load();
+    }
 
     public ApplicationState load() {
         List<ApplicationState> applicationStates = applicationStateRepository.findAll();
@@ -30,9 +34,13 @@ public class ApplicationStateService {
         return applicationState;
     }
 
+    public void save() {
+        applicationStateRepository.save(applicationState);
+    }
+
     public void setSelectedScale(Scale scale) {
         applicationState.setSelectedScale(scale);
-        applicationStateRepository.save(applicationState);
+        save();
     }
 
     public Scale getSelectedScale() {

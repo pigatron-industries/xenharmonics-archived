@@ -43,6 +43,8 @@ table {
 
 .form-control {
     padding: 6px 6px;
+    display:inline;
+    width:auto;
 }
 
 .deleteCentBtn {
