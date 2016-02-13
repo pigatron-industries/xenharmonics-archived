@@ -2,12 +2,10 @@ package com.pigatron.xen.web.rest;
 
 
 import com.google.common.collect.Lists;
-import com.pigatron.xen.domain.entity.Scale;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiResponse;
 import com.wordnik.swagger.annotations.ApiResponses;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
