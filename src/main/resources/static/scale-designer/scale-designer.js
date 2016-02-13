@@ -6,18 +6,18 @@ app.controller('scales', function($scope, $routeParams, $http) {
     $scope.params = $routeParams;
 
     // Load data
-    $http.get('/api/scales').success(function(data) {
+    $http.get('/api/scale').success(function(data) {
         $scope.scales = data;
         $scope.editing = null;
     });
-    $http.get('/api/scales/selected').success(function(data) {
+    $http.get('/api/scale/selected').success(function(data) {
         $scope.selected = data.id;
     });
 
 
     // Select scale
     $scope.setSelectedScale = function(scale) {
-        $http.put('/api/scales/selected', scale).success(function(data) {
+        $http.put('/api/scale/selected', scale).success(function(data) {
             $scope.selected = scale.id;
         });
     };
@@ -57,7 +57,7 @@ app.controller('scales', function($scope, $routeParams, $http) {
     };
 
     $scope.saveScale = function(scaleIndex) {
-        $http.post('/api/scales', $scope.editing).success(function(data) {
+        $http.post('/api/scale', $scope.editing).success(function(data) {
             $scope.scales[scaleIndex] = data;
             $scope.editing = null;
         });

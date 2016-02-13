@@ -42,7 +42,7 @@ dependencies {
 	}
 	compile('org.springframework.boot:spring-boot-starter-jetty')
 	compile('com.mangofactory:swagger-springmvc:1.0.2')
-	compile('org.springframework.data:spring-data-mongodb:1.8.2.RELEASE')
+	compile('org.springframework.data:spring-data-mongodb')
 	compile('com.pi4j:pi4j-core:1.0')
 
 	compile('org.webjars:angularjs:1.5.0-rc.2')
